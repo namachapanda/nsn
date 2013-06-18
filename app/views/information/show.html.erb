@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Info:</b>
+  <%= @information.info %>
+</p>
+
+<p>
+  <b>Renew:</b>
+  <%= @information.renew %>
+</p>
+
+
+<%= link_to 'Edit', edit_information_path(@information) %> |
+<%= link_to 'Back', information_index_path %>
