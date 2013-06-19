@@ -1,6 +1,6 @@
 Nsn::Application.routes.draw do
   resources :items
-
+  resources :information
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
