@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
@@ -25,6 +27,8 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @category_all = Category.all
+    @color_all = Color.all
 
     respond_to do |format|
       format.html # new.html.erb

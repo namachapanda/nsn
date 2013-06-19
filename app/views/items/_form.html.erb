@@ -25,11 +25,15 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+    <%= f.collection_select(:category_id, @category_all, :id, :name ,{ :include_blank => '選択してください'}) %>
   </div>
   <div class="field">
     <%= f.label :color_id %><br />
-    <%= f.number_field :color_id %>
+    <%= f.collection_select(:color_id, @color_all, :id, :name ,{ :include_blank => '選択してください'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :color_id %><br />
+    <%= f.number_field :color_id%>
   </div>
   <div class="field">
     <%= f.label :img %><br />

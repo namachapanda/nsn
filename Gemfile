@@ -40,6 +40,13 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'pry-rails'
+  gem 'rails-erd'
+end
 
 group :development, :test do
   gem 'rspec-rails'
