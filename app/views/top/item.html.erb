@@ -1,0 +1,31 @@
+<h1>商品一覧</h1>
+
+<table>
+  <tr>
+    <th>商品番号</th>
+    <th>商品名</th>
+    <th>単価</th>
+    <th>カテゴリ</th>
+    <th>色</th>
+    <th>画像URL</th>
+    <th>商品説明</th>
+  </tr>
+
+<% @search.each do |item| %>
+  <tr>
+    <td><%= item.no %></td>
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><%= item.category.name %></td>
+    <td><%= item.color.name %></td>
+    <td><%= item.img %></td>
+    <td><%= item.explain %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'トップページへ', top_path %>
+
+<br />

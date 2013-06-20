@@ -1,0 +1,8 @@
+<h1>NSN flower online shop</h1>
+
+<%= form_tag :search_items, method: :get do %>
+<p>
+<%= text_field_tag 'name', params[:name] %>
+<%= submit_tag '検索' %>
+</p>
+<% end %>

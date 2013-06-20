@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
+    @category_all = Category.all
+    @color_all = Color.all
   end
 
   # POST /items
@@ -83,5 +85,10 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @items = Item.where('name = ?',params[:name])
+    render 'index'
   end
 end

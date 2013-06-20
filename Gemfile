@@ -46,6 +46,7 @@ group :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'rails-erd'
+  gem 'thin'
 end
 
 group :development, :test do
