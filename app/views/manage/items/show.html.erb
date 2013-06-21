@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>商品情報の詳細(編集)</h1>
+<p>
+  <b>商品番号:</b>
+  <%= @item.no %>
+</p>
+
+<p>
+  <b>商品名:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>単価:</b>
+  <%= @item.price %>
+</p>
+
+<p>
+  <b>カテゴリ:</b>
+  <%= @item.category.name %>
+</p>
+
+<p>
+  <b>色:</b>
+  <%= @item.color.name %>
+</p>
+
+<p>
+  <b>画像URL:</b>
+  <%= @item.img %>
+</p>
+
+<p>
+  <b>商品説明:</b>
+  <%= @item.explain %>
+</p>
+
+
+<%= link_to '編集', edit_manage_item_path(@item) %> |
+<%= link_to '戻る', manage_items_path %>

@@ -1,4 +1,9 @@
 Nsn::Application.routes.draw do
+  namespace :manage do
+    resources :items
+  end
+
+
   resources :items do
     collection do
       get :search

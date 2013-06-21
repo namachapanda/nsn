@@ -12,6 +12,11 @@
 # Category.create(:id => 2, :name => 'バラ科')
 # Category.create(:id => 3, :name => 'アサガオ科')
 
-Color.create(:id => 1, :name => '赤')
-Color.create(:id => 2, :name => '青')
-Color.create(:id => 3, :name => '黄')
+# Color.create(:id => 1, :name => '赤')
+# Color.create(:id => 2, :name => '青')
+# Color.create(:id => 3, :name => '黄')
+
+Color.create(:id => 4, :name => 'ピンク')
+Color.create(:id => 5, :name => '紫')
+Color.create(:id => 6, :name => 'オレンジ')
+Color.create(:id => 7, :name => '白')
