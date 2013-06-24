@@ -1,0 +1,8 @@
+
+<%= form_tag({ :controller => 'items' }, { :method => :get, :class => 'well form-search' }) do %>
+<label>商品検索</label>
+<p>
+<%= text_field_tag 'name', params[:name], { :class => 'input-medium search-query', :placeholder => "フリーワード入力" } %>
+<%= submit_tag '検索' , { :class => 'btn' } %>
+</p>
+<% end %>

@@ -1,15 +1,5 @@
 <h1>商品一覧(編集)</h1>
 
-
-<h3>検索</h3>
-
-<%= form_tag :search_items, method: :get do %>
-<p>
-<%= text_field_tag 'name', params[:name] %>
-<%= submit_tag '検索' %>
-</p>
-<% end %>
-
 <table>
   <tr>
     <th>商品番号</th>
@@ -19,14 +9,6 @@
     <th>色</th>
     <th>画像URL</th>
     <th>商品説明</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<table>
-  <tr>
-    <th>No</th>
     <th></th>
     <th></th>
     <th></th>
