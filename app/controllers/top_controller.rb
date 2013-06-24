@@ -20,7 +20,7 @@ class TopController < ApplicationController
   end
 
   def item
-  	@search = Item.all
+  	@items = Item.all
     # @search = Items.find_by_img('nsn')
   end
 end

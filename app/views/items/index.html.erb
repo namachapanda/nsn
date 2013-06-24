@@ -1,16 +1,6 @@
-<h1>商品一覧</h1>
+<h1>商品検索結果</h1>
 
-
-<h3>検索</h3>
-
-<%= form_tag :search_items, method: :get do %>
-<p>
-<%= text_field_tag 'name', params[:name] %>
-<%= submit_tag '検索' %>
-</p>
-<% end %>
-
-<table>
+<table class="table table-striped">
   <tr>
     <th>商品番号</th>
     <th>商品名</th>
@@ -18,6 +8,7 @@
     <th>カテゴリ</th>
     <th>色</th>
     <th>商品説明</th>
+    <th></th>
   </tr>
 
 <% @items.each do |item| %>
@@ -28,16 +19,8 @@
     <td><%= item.category.name %></td>
     <td><%= item.color.name %></td>
     <td><%= item.explain %></td>
+    <td><%= link_to '詳細', item_path(item) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to '商品の追加', new_item_path %>
-
-<br />
-<br />
-
-<%= link_to '管理者トップページへ', manage_path %>
-
+<%= link_to 'トップページへ', top_path %>

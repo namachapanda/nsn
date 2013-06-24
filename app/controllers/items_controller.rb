@@ -4,12 +4,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    # @items = Item.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @items }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @items }
+
+    @items = Item.where(["name like ?","%#{params[:name]}%"])
+    render 'index'
   end
 
   # GET /items/1
@@ -21,11 +23,6 @@ class ItemsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @item }
     end
-  end
-
-  def search
-    @items = Item.where('name = ?',params[:name])
-    render 'index'
   end
 end
 
