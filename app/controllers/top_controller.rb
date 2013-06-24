@@ -9,6 +9,10 @@ class TopController < ApplicationController
 
      @information = Information.reorder('renew').limit(5).offset(0)
 
+     @recommend = Item.order("RAND()").limit(5)
+     @img = '<%= item.img %>'
+
+
     respond_to do |format|
       format.html # toppage.html.erb
       format.json { render json: @items }

@@ -3,13 +3,21 @@
 <%= image_tag 'ajisai_01.jpg' %>
 
 <h2>Information</h2>
-  <dev>
-	<% @information.each do |information| %>
-    
-    <p>　<%= information.renew %>　　　<%= information.info %></p>
-    <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
-    <% end %>
-  </dev>
+	
+    <table class="table">
+          <tbody>
+            <% @information.each do |information| %>
+            <tr><td><%= information.renew %></td><td><%= information.info %></td></tr>
+            <% end %>
+          </tbody>
+        </table>
+
   <%= link_to '過去のインフォメーションを見る', top_information_path %>
 
 <h2>オススメ商品</h2>
+
+ 	<% @recommend.each do |item| %>
+  	<%= image_tag item.img %>
+    <% end %>
+
+  <%= link_to 'もっと商品を見る', top_information_path %>
