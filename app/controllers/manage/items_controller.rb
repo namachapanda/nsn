@@ -29,6 +29,7 @@ class Manage::ItemsController < ApplicationController
     @item = Item.new
     @category_all = Category.all
     @color_all = Color.all
+    @url = manage_items_path
     # @method = post
 
     respond_to do |format|
@@ -42,13 +43,13 @@ class Manage::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @category_all = Category.all
     @color_all = Color.all
+    @url = manage_item_path(@item)
   end
 
   # POST /manage/items
   # POST /manage/items.json
   def create
     @item = Item.new(params[:item])
-    @method = put
 
     respond_to do |format|
       if @item.save
@@ -65,6 +66,7 @@ class Manage::ItemsController < ApplicationController
   # PUT /manage/items/1.json
   def update
     @item = Item.find(params[:id])
+    # @url = manage_items_path(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
