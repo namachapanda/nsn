@@ -1,2 +1,15 @@
 <h1>NSN flower online shop</h1>
 
+<%= image_tag 'ajisai_01.jpg' %>
+
+<h2>Information</h2>
+  <dev>
+	<% @information.each do |information| %>
+    
+    <p>　<%= information.renew %>　　　<%= information.info %></p>
+    <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+    <% end %>
+  </dev>
+  <%= link_to '過去のインフォメーションを見る', top_information_path %>
+
+<h2>オススメ商品</h2>

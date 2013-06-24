@@ -7,11 +7,13 @@ class TopController < ApplicationController
     # search_word = Items.decode(params[:q].to_s)
     # @top = Item.where(content: search_word)
 
+     @information = Information.reorder('renew').limit(5).offset(0)
+
     respond_to do |format|
       format.html # toppage.html.erb
       format.json { render json: @items }
     end
-  end	
+  end
 
   def item
   	@search = Item.all
