@@ -4,13 +4,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    # @items = Item.all
-
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @items }
-
-    # @items = Item.where(["name like ?","%#{params[:name]}%"])
     params_category = params_color = Hash.new
     low_price = 0
     high_price = 2147483647
@@ -31,10 +24,7 @@ class ItemsController < ApplicationController
         high_price = params[:price2]
       end
 
-    # @freeword = '(name like ?) OR (explanation like ?)',"%#{params[:name]}%"
-    # .or(["explain like ?","%#{params[:name]}%"])
-    # where('(name like ?) OR (no like ?)', "%#{params[:name]}%", "%#{params[:name]}%")
-    @freeword = 'name like ?',"%#{params[:name]}%"
+    @freeword = '(name like ?) OR (explanation like ?)',"%#{params[:name]}%","%#{params[:name]}%"
 
     @items = Item.where(
                       @freeword
