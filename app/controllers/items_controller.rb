@@ -10,7 +10,48 @@ class ItemsController < ApplicationController
     #   format.html # index.html.erb
     #   format.json { render json: @items }
 
-    @items = Item.where(["name like ?","%#{params[:name]}%"])
+    # @items = Item.where(["name like ?","%#{params[:name]}%"])
+    pcategory = pcolor = Hash.new
+    lowprice = 0
+    highprice = 2147483647
+
+      if params[:category_id]
+        pcategory[:category_id] = params[:category_id]
+      end
+
+      if params[:color_id]
+        pcolor[:color_id] = params[:color_id]
+      end
+
+      unless params[:price1].blank?
+        lowprice = params[:price1]
+      end
+
+      unless params[:price2].blank?
+        highprice = params[:price2]
+      end
+
+    @freeword = ["name like ?","%#{params[:name]}%"]
+    # .or(["explain like ?","%#{params[:name]}%"])
+
+    @items = Item.where(
+                      @freeword
+                ).where(
+                      pcategory
+                ).where(
+                      pcolor
+                ).where(
+                      'price >= ?',lowprice
+                ).where(
+                      'price <= ?',highprice
+                )
+
+    # @freeword = Item.pneme.pexplain.where_values.reduce(:or)
+    # @items = Item.where(@freeword).to_sql
+
+    # @items = Item.search(:name_cont => 'params[:name]')
+    # @items = Item.search_for_name([:name, :explain], "%#{params[:name]}%").to_sql
+
     render 'index'
   end
 

@@ -1,8 +1,38 @@
+<h4>商品検索</h4>
+<dl>
+  <%= form_tag( :items , { :method => :get, :class => 'form-horizontal' }) do %>
+  	<dt>フリーワードで検索</dt>
+	<dd><%= text_field_tag 'name', params[:name], { :class => 'input-medium search-query', :placeholder => "フリーワード入力" } %>
+	</dd>
+	<dt>カテゴリから検索</dt>
+	<% all_categories.each do |category| %>
+	<dd>
+	  <label>
+	  	<%= check_box_tag "category_id[]", category.id %>
+<!-- <%= check_box_tag :category_id, {:name => "items[category_id][]"} %> -->
+		<%= category.name %>
+      </label>
+    </dd>
+	<% end %>
+	<dt>色から検索</dt>
+	<% all_colors.each do |color| %>
+	<dd>
+	  <label>
+	  	<%= check_box_tag "color_id[]", color.id %>
+	  <!-- 
+	  	<%= check_box_tag :color_id, {:name => "items[color_id][]"} %> -->
+		<%= color.name %>
+      </label>
+    </dd>
+	<% end %>
+	<dt>値段から検索</dt>
+	<dd>
+	  <%= text_field_tag "price1" %>
+	  円〜
+	  <%= text_field_tag "price2" %>
+	  円
+	</dd>
+	<dd><%= submit_tag '検索' , { :class => 'btn' } %></dd>
+  <% end %>
+</dl>
 
-<%= form_tag({ :controller => 'items' }, { :method => :get, :class => 'well form-search' }) do %>
-<label>商品検索</label>
-<p>
-<%= text_field_tag 'name', params[:name], { :class => 'input-medium search-query', :placeholder => "フリーワード入力" } %>
-<%= submit_tag '検索' , { :class => 'btn' } %>
-</p>
-<% end %>
