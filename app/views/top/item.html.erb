@@ -8,6 +8,7 @@
     <th>カテゴリ</th>
     <th>色</th>
     <th>商品説明</th>
+    <th></th>
   </tr>
 
 <% @items.each do |item| %>
@@ -18,6 +19,7 @@
     <td><%= item.category.name %></td>
     <td><%= item.color.name %></td>
     <td><%= item.explain %></td>
+    <td><%= link_to '詳細', item_path(item) %></td>
   </tr>
 <% end %>
 </table>

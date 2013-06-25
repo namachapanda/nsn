@@ -1,7 +1,14 @@
 <h1>インフォメーション一覧</h1>
+<table class="table table-striped">
+  <tr>
+    <th>インフォメーション情報</th>
+    <th>更新日</th>
+  </tr>
 
-<br />
-
+<% @information.each do |information| %>
+  <tr>
+    <td><%= information.info %></td>
+    <td><%= information.renew %></td>
+<% end %>
+</table>
 <%= link_to 'トップページへ', top_path %>
-
-<br />

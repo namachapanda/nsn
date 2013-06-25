@@ -7,7 +7,7 @@ class TopController < ApplicationController
     # search_word = Items.decode(params[:q].to_s)
     # @top = Item.where(content: search_word)
 
-     @information = Information.reorder('renew').limit(5).offset(0)
+     @information = Information.order('renew DESC').limit(5).offset(0)
 
      @recommend = Item.order("RAND()").limit(5)
      @img = '<%= item.img %>'
@@ -21,6 +21,9 @@ class TopController < ApplicationController
 
   def item
   	@items = Item.all
-    # @search = Items.find_by_img('nsn')
+  end
+
+  def information
+    @information = Information.order('renew DESC')
   end
 end

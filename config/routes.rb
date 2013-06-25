@@ -1,6 +1,8 @@
 Nsn::Application.routes.draw do
   namespace :manage do
     resources :items
+
+    resources :information
   end
 
 

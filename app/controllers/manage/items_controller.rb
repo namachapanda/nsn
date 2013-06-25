@@ -27,8 +27,6 @@ class Manage::ItemsController < ApplicationController
   # GET /manage/items/new.json
   def new
     @item = Item.new
-    @category_all = Category.all
-    @color_all = Color.all
     @url = manage_items_path
     # @method = post
 
@@ -41,8 +39,6 @@ class Manage::ItemsController < ApplicationController
   # GET /manage/items/1/edit
   def edit
     @item = Item.find(params[:id])
-    @category_all = Category.all
-    @color_all = Color.all
     @url = manage_item_path(@item)
   end
 
@@ -89,10 +85,5 @@ class Manage::ItemsController < ApplicationController
       format.html { redirect_to manage_items_path }
       format.json { head :no_content }
     end
-  end
-
-  def search
-    @items = Item.where('name = ?',params[:name])
-    render 'index'
   end
 end
