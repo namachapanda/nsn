@@ -27,9 +27,9 @@
 	<% end %>
 	<dt>値段から検索</dt>
 	<dd>
-	  <%= text_field_tag "price1" %>
+	  <%= text_field_tag "price1" , '', { :class => 'span4' } %>
 	  円〜
-	  <%= text_field_tag "price2" %>
+	  <%= text_field_tag "price2" , '', { :class => 'span4' }%>
 	  円
 	</dd>
 	<dd><%= submit_tag '検索' , { :class => 'btn' } %></dd>

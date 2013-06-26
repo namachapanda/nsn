@@ -1,33 +1,37 @@
 <h1>商品一覧(編集)</h1>
 
 <table class="table table-striped">
-  <tr>
-    <th>商品番号</th>
-    <th>商品名</th>
-    <th>単価</th>
-    <th>カテゴリ</th>
-    <th>色</th>
-    <th>画像URL</th>
-    <th>商品説明</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>商品番号</th>
+      <th class="span2">商品名</th>
+      <th>単価</th>
+      <th>カテゴリ</th>
+      <th>色</th>
+      <th>画像URL</th>
+      <th class="span3">商品説明</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @items.each do |item| %>
-   <tr>
-    <td><%= item.no %></td>
-    <td><%= item.name %></td>
-    <td><%= item.price %></td>
-    <td><%= item.category.name %></td>
-    <td><%= item.color.name %></td>
-    <td><%= image_tag item.img %><%= item.img %></td>
-    <td><%= item.explanation %></td>
-    <td><%= link_to '詳細', manage_item_path(item) %></td>
-    <td><%= link_to '編集', edit_manage_item_path(item) %></td>
-    <td><%= link_to '削除', manage_item_path(item), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @items.each do |item| %>
+       <tr>
+        <td><%= item.no %></td>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.category.name %></td>
+        <td><%= item.color.name %></td>
+        <td><div><%= image_tag item.img %></div><%= item.img %></td>
+        <td><%= item.explanation %></td>
+        <td><%= link_to '詳細', manage_item_path(item) %></td>
+        <td><%= link_to '編集', edit_manage_item_path(item) %></td>
+        <td><%= link_to '削除', manage_item_path(item), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <%= link_to '商品の追加', new_manage_item_path %>
