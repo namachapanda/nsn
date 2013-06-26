@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20130625082830) do
 
+  create_table "apples", :force => true do |t|
+    t.string   "family_name"
+    t.string   "first_name"
+    t.string   "address"
+    t.integer  "tel"
+    t.string   "mail"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false

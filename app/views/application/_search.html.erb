@@ -9,7 +9,6 @@
 	<dd>
 	  <label>
 	  	<%= check_box_tag "category_id[]", category.id %>
-<!-- <%= check_box_tag :category_id, {:name => "items[category_id][]"} %> -->
 		<%= category.name %>
       </label>
     </dd>
@@ -19,8 +18,6 @@
 	<dd>
 	  <label>
 	  	<%= check_box_tag "color_id[]", color.id %>
-	  <!-- 
-	  	<%= check_box_tag :color_id, {:name => "items[color_id][]"} %> -->
 		<%= color.name %>
       </label>
     </dd>

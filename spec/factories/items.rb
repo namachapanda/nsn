@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :item do
-    no 1
+    no 2222
     name "MyString"
-    price "9.99"
+    price "999"
     category_id 1
     color_id 1
-    img "MyString"
-    explain "MyText"
+    img "2222.jpg"
+    explanation "MyText"
   end
 end

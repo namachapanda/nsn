@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'database_cleaner'
 require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -35,4 +36,34 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
+  if ENV["RAILS_ENV"] == 'test'
+    config.before :suite do
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with :truncation
+    end
+
+    config.before :all do
+      DatabaseCleaner.start
+    end
+
+    config.before :each do
+      if example.metadata[:clean_database]
+        DatabaseCleaner.start
+      end
+    end
+
+    config.after :all do
+      DatabaseCleaner.clean
+    end
+
+    config.after :each do
+      if example.metadata[:clean_database]
+        DatabaseCleaner.clean
+      end
+    end
+  end
+
 end
