@@ -16,7 +16,12 @@
 # Color.create(:id => 2, :name => '青')
 # Color.create(:id => 3, :name => '黄')
 
-Color.create(:id => 4, :name => 'ピンク')
-Color.create(:id => 5, :name => '紫')
-Color.create(:id => 6, :name => 'オレンジ')
-Color.create(:id => 7, :name => '白')
+# Color.create(:id => 4, :name => 'ピンク')
+# Color.create(:id => 5, :name => '紫')
+# Color.create(:id => 6, :name => 'オレンジ')
+# Color.create(:id => 7, :name => '白')
+
+
+Category.create(:id => 4, :name => 'アブラナ科')
+Category.create(:id => 5, :name => 'ユリ科')
+Category.create(:id => 6, :name => 'スミレ科')

@@ -36,7 +36,7 @@ class Manage::InformationController < ApplicationController
 
     respond_to do |format|
       if @information.save
-        format.html { redirect_to manage_information_index_path, notice: 'Information was successfully created.' }
+        format.html { redirect_to manage_information_index_path, notice: 'インフォメーション情報が追加されました' }
         format.json { render json: @information, status: :created, location: @information }
       else
         format.html { render action: "new" }
@@ -52,7 +52,7 @@ class Manage::InformationController < ApplicationController
 
     respond_to do |format|
       if @information.update_attributes(params[:information])
-        format.html { redirect_to manage_information_index_path, notice: 'Information was successfully updated.' }
+        format.html { redirect_to manage_information_index_path, notice: 'インフォメーション情報が更新されました' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

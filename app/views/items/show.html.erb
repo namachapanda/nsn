@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @item.img %>
+</p>
+
+<p>
   <b>商品番号:</b>
   <%= @item.no %>
 </p>
@@ -12,7 +16,7 @@
 
 <p>
   <b>単価:</b>
-  <%= @item.price %>
+  <%= @item.price %>円
 </p>
 
 <p>

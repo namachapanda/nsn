@@ -21,7 +21,7 @@
     <td><%= item.price %></td>
     <td><%= item.category.name %></td>
     <td><%= item.color.name %></td>
-    <td><%= item.img %></td>
+    <td><%= image_tag item.img %><%= item.img %></td>
     <td><%= item.explanation %></td>
     <td><%= link_to '詳細', manage_item_path(item) %></td>
     <td><%= link_to '編集', edit_manage_item_path(item) %></td>
