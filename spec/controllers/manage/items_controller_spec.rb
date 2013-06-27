@@ -47,17 +47,14 @@ describe Manage::ItemsController do
   describe "GET index" do
     # let(:item) { FactoryGirl.create(:item) }
 
-    context '各ページから遷移して来た場合' do
-      before do
-        get :index
-        puts "aaa"
-      end
-      it '正常にアクセスできること' do
-        response.should be_success
-      end
-      it 'データが１件取得できること' do
-        assigns(:items).should have(1).item
-      end
+    before do
+      get :index
+    end
+    it 'アクセスできること' do
+      response.should be_success
+    end
+    it 'データが１件取得できること' do
+      assigns(:items).should have(1).item
     end
   end
 
@@ -69,20 +66,18 @@ describe Manage::ItemsController do
   #   end
   # end
 
-  # describe "GET show" do
-  #   context '商品詳細を表示する場合' do
-  #     before do
-  #       get :show
-  #     end
-  #     it '正常にアクセスできること' do
-  #       # response.should be_success
-  #       # item = Item.create! valid_attributes
-  #       # get :show, {:id => item.to_param}, valid_session
-  #       # assigns(:items).should eq([item])
-  #       assigns(:items).should have(1).item
-  #     end
-  #   end
-  # end
+  describe "GET show" do
+
+    before do
+      get :show, { :id => Item.first.id }
+    end
+    it 'アクセスできること' do
+      response.should be_success
+    end
+    it '対象商品の詳細情報を取得できること' do
+      assigns(:item).should eq(Item.first)
+    end
+  end
 
   # describe "GET new" do
   #   it "商品が追加された場合" do

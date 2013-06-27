@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :information do
     info "MyString"
-    renew ""
+    renew Time.now
   end
 end
