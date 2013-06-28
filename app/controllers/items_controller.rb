@@ -4,41 +4,45 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    params_category = params_color = Hash.new
-    low_price = 0
-    high_price = 2147483647
 
-      if params[:category_id]
-        params_category[:category_id] = params[:category_id]
-      end
+    @items = Item.search(params[:freeword], params[:category_id], params[:color_id], params[:price1],params[:price2])
 
-      if params[:color_id]
-        params_color[:color_id] = params[:color_id]
-      end
+  #   params_category = params_color = Hash.new
+  #   low_price = 0
+  #   high_price = 2147483647
 
-      unless params[:price1].blank?
-        low_price = params[:price1]
-      end
+  #     # if params[:category_id]
+  #     #   params_category[:category_id] = params[:category_id]
+  #     # end
 
-      unless params[:price2].blank?
-        high_price = params[:price2]
-      end
+  #     # if params[:color_id]
+  #     #   params_color[:color_id] = params[:color_id]
+  #     # end
 
-    @freeword = '(name like ?) OR (explanation like ?)',"%#{params[:name]}%","%#{params[:name]}%"
 
-    @items = Item.where(
-                      @freeword
-                ).where(
-                      params_category
-                ).where(
-                      params_color
-                ).where(
-                      'price >= ?',low_price
-                ).where(
-                      'price <= ?',high_price
-                )
+  #     unless params[:price1].blank?
+  #       low_price = params[:price1]
+  #     end
 
-    render 'index'
+  #     unless params[:price2].blank?
+  #       high_price = params[:price2]
+  #     end
+
+  #   @freeword = '(name like ?) OR (explanation like ?)',"%#{params[:name]}%","%#{params[:name]}%"
+
+  #   @items = Item.where(
+  #                     @freeword
+  #               ).where(
+  #                     params_category
+  #               ).where(
+  #                     params_color
+  #               ).where(
+  #                     'price >= ?',low_price
+  #               ).where(
+  #                     'price <= ?',high_price
+  #               )
+
+  #   render 'index'
   end
 
   # GET /items/1

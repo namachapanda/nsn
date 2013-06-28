@@ -170,22 +170,7 @@ describe Manage::ItemsController do
     end
 
     context "パラメータが無効な場合" do
-  #     it "assigns the manage_item as @manage_item" do
-  #       item = Manage::Item.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Manage::Item.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => item.to_param, :manage_item => { "no" => "invalid value" }}, valid_session
-  #       assigns(:manage_item).should eq(item)
-  #     end
-
-  #     it "re-renders the 'edit' template" do
-  #       item = Manage::Item.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Manage::Item.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => item.to_param, :manage_item => { "no" => "invalid value" }}, valid_session
-  #       response.should render_template("edit")
-  #     end
-  #   end
+      
       let(:valid_attributes) {
         {
           :no => "",

@@ -2,7 +2,7 @@
 <dl>
   <%= form_tag( :items , { :method => :get, :class => 'form-horizontal' }) do %>
   	<dt>フリーワードで検索</dt>
-	<dd><%= text_field_tag 'name', params[:name], { :class => 'input-medium search-query', :placeholder => "フリーワード入力" } %>
+	<dd><%= text_field_tag 'name', params[:freeword], { :class => 'input-medium search-query', :placeholder => "フリーワード入力" } %>
 	</dd>
 	<dt>カテゴリから検索</dt>
 	<% all_categories.each do |category| %>
@@ -24,9 +24,9 @@
 	<% end %>
 	<dt>値段から検索</dt>
 	<dd>
-	  <%= text_field_tag "price1" , '', { :class => 'span4' } %>
+	  <%= text_field_tag "low_price" , '', { :class => 'span4' } %>
 	  円〜
-	  <%= text_field_tag "price2" , '', { :class => 'span4' }%>
+	  <%= text_field_tag "high_price" , '', { :class => 'span4' }%>
 	  円
 	</dd>
 	<dd><%= submit_tag '検索' , { :class => 'btn' } %></dd>

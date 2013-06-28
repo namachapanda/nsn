@@ -36,4 +36,37 @@ class Item < ActiveRecord::Base
   	:length => { :maximum => 150, :message => 'は150字以内で入力してください' }
 
 
+    
+  
+  scope :search, lambda{ |freeword, category_id, color_id, price1, price2|
+
+    params_category = params_color = Hash.new
+    low_price = 0
+    high_price = 2147483647
+
+      if "#{category_id}"
+        params_category[:category_id] = "#{category_id}"
+      end
+
+      if "#{color_id}"
+        params_color[:color_id] = "#{color_id}"
+      end
+
+      unless "#{price1}".blank?
+        low_price = "#{price1}"
+      end
+
+      unless "#{price2}".blank?
+        high_price = "#{price2}"
+      end
+
+    @freeword = '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%"
+
+     where( @freeword )
+    .where( "category_id = ?", "#{category_id}" )
+    .where( "color_id = ?", "#{color_id}" )
+    .where( 'price >= ?',low_price )
+    .where( 'price <= ?',high_price )
+  }
+
 end
