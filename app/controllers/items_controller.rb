@@ -5,7 +5,11 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
 
-    @items = Item.search(params[:freeword], params[:category_id], params[:color_id], params[:price1],params[:price2])
+      # @items = Item.category(params[:category_id])
+
+  @items = Item.freeword(params[:freeword]).category(params[:category_id]).color(params[:color_id]).low_price(params[:low_price]).high_price(params[:high_price])
+
+    # @items = Item.search(params[:freeword], params[:category_id], params[:color_id], params[:low_price],params[:high_price])
 
   #   params_category = params_color = Hash.new
   #   low_price = 0

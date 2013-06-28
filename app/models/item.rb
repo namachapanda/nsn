@@ -1,10 +1,14 @@
 #encoding: utf-8
 
 class Item < ActiveRecord::Base
-  belongs_to :category
-  belongs_to :color
+  # アクセッサ関連のクラスメソッドを呼び出す
   attr_accessible :category_id, :color_id, :explanation, :img, :name, :no, :price
 
+  # アソシエーション関連のクラスメソッドを呼び出す
+  belongs_to :category
+  belongs_to :color
+  
+  # バリデーション関連のクラスメソッドを呼び出す
   validates :no,
   	:presence => { :message => 'は必ず入力してください' },
   	:uniqueness => { :message => 'が重複しています' },
@@ -35,38 +39,79 @@ class Item < ActiveRecord::Base
   	:presence => { :message => 'は必ず入力してください' },
   	:length => { :maximum => 150, :message => 'は150字以内で入力してください' }
 
+  # Named scopeを呼び出す
+
+  # scope :search, lambda{ |freeword, category_id, color_id, price1, price2|
+
+  #   params_category = params_color = Hash.new
+  #   low_price = 0
+  #   high_price = 2147483647
 
     
-  
-  scope :search, lambda{ |freeword, category_id, color_id, price1, price2|
 
-    params_category = params_color = Hash.new
-    low_price = 0
-    high_price = 2147483647
+      # if "#{color_id}".blank?
+      #   color_id = "#{color_id}"
+      # end
 
-      if "#{category_id}"
-        params_category[:category_id] = "#{category_id}"
-      end
+      # unless "#{low_price}".blank?
+      #   low_price = "#{low_price}"
+      # end
 
-      if "#{color_id}"
-        params_color[:color_id] = "#{color_id}"
-      end
+      # unless "#{high_price}".blank?
+      #   high_price = "#{high_price}"
+      # end
 
-      unless "#{price1}".blank?
-        low_price = "#{price1}"
-      end
 
-      unless "#{price2}".blank?
-        high_price = "#{price2}"
-      end
 
-    @freeword = '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%"
+  #   @freeword = '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%"
 
-     where( @freeword )
-    .where( "category_id = ?", "#{category_id}" )
-    .where( "color_id = ?", "#{color_id}" )
-    .where( 'price >= ?',low_price )
-    .where( 'price <= ?',high_price )
+  #    where( @freeword )
+  #   .where( "category_id = ?", "#{category_id}" )
+  #   .where( "color_id = ?", "#{color_id}" )
+  #   .where( 'price >= ?',low_price )
+  #   .where( 'price <= ?',high_price )
+  # }
+scope :search, lambda {|params|
+  relation = Item.all
+  relation = relation.freeword(params[:freeword]) if params[:freeword].present?
+}
+  scope :freeword, lambda{ |freeword|
+    where( '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%" )
   }
 
+  scope :category, lambda{ |category_id|
+    where( :category_id => category_id )
+  }
+
+  scope :color, lambda{ |color_id|
+    where( :color_id => "#{color_id}" )
+  }
+
+  scope :low_price, lambda{ |low_price|
+    where( 'price >= ?', "#{low_price}" )
+  }
+
+  scope :high_price, lambda{ |high_price|
+    where( 'price <= ?', "#{high_price}" )
+  }
+
+  #   scope :freeword, lambda{ |freeword|
+  #   where( '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%" )
+  # }
+
+  scope :category, lambda{ |category_id|
+    where( 'category_id like ?', "#{category_id}" )
+  }
+
+  # scope :color, lambda{ |color_id|
+  #   where( 'color_id like ?', "#{color_id}" )
+  # }
+
+  # scope :low_price, lambda{ |low_price|
+  #   where( 'price >= ?', "#{low_price}" )
+  # }
+
+  # scope :high_price, lambda{ |high_price|
+  #   where( 'price <= ?', "#{high_price}" )
+  # }
 end
