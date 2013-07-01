@@ -40,41 +40,16 @@ class Item < ActiveRecord::Base
   	:length => { :maximum => 150, :message => 'は150字以内で入力してください' }
 
   # Named scopeを呼び出す
-
-  # scope :search, lambda{ |freeword, category_id, color_id, price1, price2|
-
-  #   params_category = params_color = Hash.new
-  #   low_price = 0
-  #   high_price = 2147483647
-
-    
-
-      # if "#{color_id}".blank?
-      #   color_id = "#{color_id}"
-      # end
-
-      # unless "#{low_price}".blank?
-      #   low_price = "#{low_price}"
-      # end
-
-      # unless "#{high_price}".blank?
-      #   high_price = "#{high_price}"
-      # end
-
-
-
-  #   @freeword = '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%"
-
-  #    where( @freeword )
-  #   .where( "category_id = ?", "#{category_id}" )
-  #   .where( "color_id = ?", "#{color_id}" )
-  #   .where( 'price >= ?',low_price )
-  #   .where( 'price <= ?',high_price )
-  # }
-scope :search, lambda {|params|
-  relation = Item.all
+  scope :search, lambda {|params|
+  relation = Item.order
   relation = relation.freeword(params[:freeword]) if params[:freeword].present?
-}
+  relation = relation.category(params[:category_id]) if params[:category_id].present?
+  relation = relation.color(params[:color_id]) if params[:color_id].present?
+  relation = relation.low_price(params[:low_price]) if params[:low_price].present?
+  relation = relation.high_price(params[:high_price]) if params[:high_price].present?
+  relation
+  }
+
   scope :freeword, lambda{ |freeword|
     where( '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%" )
   }
@@ -84,34 +59,15 @@ scope :search, lambda {|params|
   }
 
   scope :color, lambda{ |color_id|
-    where( :color_id => "#{color_id}" )
+    where( :color_id => color_id )
   }
 
   scope :low_price, lambda{ |low_price|
-    where( 'price >= ?', "#{low_price}" )
+    where( 'price >= ?', low_price )
   }
 
   scope :high_price, lambda{ |high_price|
-    where( 'price <= ?', "#{high_price}" )
+    where( 'price <= ?', high_price )
   }
 
-  #   scope :freeword, lambda{ |freeword|
-  #   where( '(name like ?) OR (explanation like ?)',"%#{freeword}%","%#{freeword}%" )
-  # }
-
-  scope :category, lambda{ |category_id|
-    where( 'category_id like ?', "#{category_id}" )
-  }
-
-  # scope :color, lambda{ |color_id|
-  #   where( 'color_id like ?', "#{color_id}" )
-  # }
-
-  # scope :low_price, lambda{ |low_price|
-  #   where( 'price >= ?', "#{low_price}" )
-  # }
-
-  # scope :high_price, lambda{ |high_price|
-  #   where( 'price <= ?', "#{high_price}" )
-  # }
 end
