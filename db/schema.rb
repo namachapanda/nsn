@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625082830) do
-
-  create_table "apples", :force => true do |t|
-    t.string   "family_name"
-    t.string   "first_name"
-    t.string   "address"
-    t.integer  "tel"
-    t.string   "mail"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130710031321) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20130625082830) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "companies", :force => true do |t|
+    t.integer  "schema_code"
+    t.string   "domain_id"
+    t.string   "name"
+    t.string   "code"
+    t.integer  "status_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "information", :force => true do |t|

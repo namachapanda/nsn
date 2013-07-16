@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Schema code:</b>
+  <%= @company.schema_code %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @company.domain_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @company.code %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @company.status_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

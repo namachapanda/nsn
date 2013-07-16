@@ -1,4 +1,7 @@
 Nsn::Application.routes.draw do
+  resources :companies
+
+
   namespace :manage do
     resources :items
 
