@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710031321) do
+ActiveRecord::Schema.define(:version => 20130716103322) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,5 +53,14 @@ ActiveRecord::Schema.define(:version => 20130710031321) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "login_code",         :default => "", :null => false
+    t.string   "encrypted_password", :default => "", :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "users", ["login_code"], :name => "index_users_on_login_code", :unique => true
 
 end

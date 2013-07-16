@@ -4,4 +4,7 @@
   <li><%= link_to 'お知らせ', top_information_path %></li>
   <li><%= link_to '店舗案内', top_shop_path %></li>
   <li><%= link_to 'サイトマップ', top_sitemap_path %></li>
+  <li><%= link_to  destroy_user_session_path, method: :delete do %>logout<% end %></li>
+  <li><%= link_to  'login', new_user_session_path %></li>
+  <% if user_signed_in? %><%= current_user.login_code %><% end %>
 </ul>
